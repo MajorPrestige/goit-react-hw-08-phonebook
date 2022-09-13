@@ -1,14 +1,15 @@
-import s from './Loader.module.css';
+import s from './ServerLoader.module.css';
 
-const Loader = () => {
+const ServerLoader = () => {
   return (
     <div className={s.backdrop}>
       <div className={s.modal}>
         <span className={s.smile}>💩</span>
+        <p>Loading...</p>
         <p>Sorry, it's free backend</p>
       </div>
     </div>
   );
 };
 
-export default Loader;
+export default ServerLoader;

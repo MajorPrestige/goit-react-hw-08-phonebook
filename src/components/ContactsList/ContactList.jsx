@@ -10,7 +10,7 @@ import ContactsItem from 'components/ContactsItem/ContactsItem';
 import { getFilteredContacts } from 'redux/contacts/list/items/items-selectors';
 import { getLoading } from 'redux/contacts/list/loading/loading-selecors';
 import s from './ContactList.module.css';
-import Loader from 'components/Loader/Loader';
+import ServerLoader from 'components/ServerLoader/ServerLoader';
 
 const ContactLists = () => {
   const contacts = useSelector(getFilteredContacts);
@@ -40,7 +40,7 @@ const ContactLists = () => {
 
   return (
     <>
-      {loading && <Loader />}
+      {loading && <ServerLoader />}
       <ul className={s.list}>
         {contacts.map(({ name, number, id }) => (
           <ContactsItem
