@@ -11,6 +11,11 @@ const HomePage = () => {
       <h1>PHONEBOOK</h1>
       <ul className={s.list}>
         <li>
+          <NavLink to="/contacts" className={getClassName}>
+            Contacts
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/signup" className={getClassName}>
             Register
           </NavLink>

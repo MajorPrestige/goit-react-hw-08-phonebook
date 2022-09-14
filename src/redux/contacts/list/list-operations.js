@@ -14,7 +14,8 @@ export const getContacts = createAsyncThunk(
       const data = await axiosGetContacts();
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
     }
   }
 );
@@ -26,7 +27,8 @@ export const addContact = createAsyncThunk(
       const data = await axiosPostContacts(contact);
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
     }
   },
   {
@@ -51,7 +53,8 @@ export const deleteContact = createAsyncThunk(
       await axiosDeleteContacts(id);
       return id;
     } catch (error) {
-      return rejectWithValue(error);
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
     }
   }
 );
@@ -63,7 +66,8 @@ export const checkContacts = createAsyncThunk(
       await axiosCheckContacts(id);
       return id;
     } catch (error) {
-      return rejectWithValue(error);
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
     }
   }
 );
@@ -79,7 +83,8 @@ export const deleteCheckedContacts = createAsyncThunk(
       const data = checkedContacts.map(({ id }) => id);
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const { data, status } = error.response;
+      return rejectWithValue({ data, status });
     }
   }
 );
