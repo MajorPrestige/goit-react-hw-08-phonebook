@@ -15,3 +15,9 @@ export const axiosLogin = async userData => {
   instance.defaults.headers.authorization = `Bearer ${data.token}`;
   return data;
 };
+
+export const axiosLogout = async () => {
+  const { data } = await instance.post('/users/logout');
+  instance.defaults.headers.authorization = null;
+  return data;
+};

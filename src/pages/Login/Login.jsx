@@ -1,8 +1,13 @@
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { login } from 'redux/auth/auth-operations';
+import { getLogin } from 'redux/auth/auth-selectors';
+
 import s from './Login.module.css';
 
 const Login = () => {
+  const isLogin = useSelector(getLogin);
   const dispatch = useDispatch();
 
   const handleRegisterFormSubmit = e => {
@@ -12,10 +17,13 @@ const Login = () => {
       email: elements.email.value,
       password: elements.password.value,
     };
-
     dispatch(login(userData));
     e.target.reset();
   };
+
+  if (isLogin) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <form className={s.form} onSubmit={handleRegisterFormSubmit}>

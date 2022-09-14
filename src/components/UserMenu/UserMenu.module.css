@@ -4,6 +4,12 @@
   justify-content: flex-end;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .link {
   display: block;
   text-decoration: none;
