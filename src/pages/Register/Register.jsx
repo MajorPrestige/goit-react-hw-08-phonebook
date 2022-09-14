@@ -1,8 +1,13 @@
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { signup } from 'redux/auth/auth-operations';
+import { getLogin } from 'redux/auth/auth-selectors';
+
 import s from './Register.module.css';
 
 const Register = () => {
+  const isLogin = useSelector(getLogin);
   const dispatch = useDispatch();
 
   const handleRegisterFormSubmit = e => {
@@ -17,6 +22,10 @@ const Register = () => {
     dispatch(signup(userData));
     e.target.reset();
   };
+
+  if (isLogin) {
+    return <Navigate to="/contacts" />;
+  }
 
   return (
     <form className={s.form} onSubmit={handleRegisterFormSubmit}>
