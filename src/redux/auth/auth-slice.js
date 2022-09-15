@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup, login, logout } from './auth-operations';
+import { signup, login, logout, current } from './auth-operations';
 
 const initialState = {
   user: {},
@@ -7,6 +7,14 @@ const initialState = {
   isLogin: false,
   loading: false,
   error: null,
+  firstLoading: false,
+};
+
+const accessAuth = (store, payload) => {
+  store.loading = false;
+  store.isLogin = true;
+  store.user = payload.user;
+  store.token = payload.token;
 };
 
 const auth = createSlice({
@@ -19,12 +27,7 @@ const auth = createSlice({
       store.loading = true;
       store.error = null;
     },
-    [signup.fulfilled]: (store, { payload }) => {
-      store.loading = false;
-      store.isLogin = true;
-      store.user = payload.user;
-      store.token = payload.token;
-    },
+    [signup.fulfilled]: (store, { payload }) => accessAuth(store, payload),
     [signup.rejected]: (store, { payload }) => {
       store.loading = false;
       store.error = payload;
@@ -36,12 +39,7 @@ const auth = createSlice({
       store.loading = true;
       store.error = null;
     },
-    [login.fulfilled]: (store, { payload }) => {
-      store.loading = false;
-      store.isLogin = true;
-      store.user = payload.user;
-      store.token = payload.token;
-    },
+    [login.fulfilled]: (store, { payload }) => accessAuth(store, payload),
     [login.rejected]: (store, { payload }) => {
       store.loading = false;
       store.error = payload;
@@ -53,9 +51,25 @@ const auth = createSlice({
       store.loading = true;
       store.error = null;
     },
-    [logout.fulfilled]: store => ({ ...initialState }),
+    [logout.fulfilled]: () => ({ ...initialState }),
     [logout.rejected]: (store, { payload }) => {
       store.loading = false;
+      store.error = payload;
+    },
+
+    // * CURRENT
+
+    [current.pending]: store => {
+      store.firstLoading = true;
+      store.error = null;
+    },
+    [current.fulfilled]: (store, { payload }) => {
+      store.firstLoading = false;
+      store.isLogin = true;
+      store.user = payload;
+    },
+    [current.rejected]: (store, { payload }) => {
+      store.firstLoading = false;
       store.error = payload;
     },
   },

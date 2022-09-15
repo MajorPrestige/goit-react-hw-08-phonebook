@@ -1,16 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+
+import { Button, TextField } from '@mui/material';
+
 import s from './ContactsForm.module.css';
 import { addContact } from 'redux/contacts/list/list-operations';
 
 function ContactsForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-  const inputNameId = useRef(nanoid());
-  const inputNumberId = useRef(nanoid());
 
   const dispatch = useDispatch();
 
@@ -42,22 +41,20 @@ function ContactsForm() {
 
   return (
     <form className={s.form} onSubmit={handleFormSubmit}>
-      <label className={s.label} htmlFor={inputNameId}>
+      <label className={s.label}>
         Name
-        <input
-          className={s.input}
+        <TextField
+          id="standard-basic"
+          label="Name"
+          variant="standard"
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
           value={name}
           onChange={handleNameChange}
-          id={inputNameId}
         />
       </label>
 
-      <label className={s.label} htmlFor={inputNumberId}>
+      <label className={s.label}>
         Number
         <input
           className={s.input}
@@ -68,7 +65,6 @@ function ContactsForm() {
           required
           value={number}
           onChange={handleNumberChange}
-          id={inputNumberId}
         />
       </label>
       <button className={s.btn} type="submit">

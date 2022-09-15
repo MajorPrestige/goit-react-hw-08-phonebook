@@ -10,15 +10,12 @@
   justify-content: space-between;
 }
 
+.text {
+  margin-right: 24px;
+}
+
 .link {
   display: block;
   text-decoration: none;
-  width: 120px;
-  padding: 10px 20px;
-  margin: 20px 10px;
-  text-align: center;
-  background-color: blue;
-  border-radius: 5px;
   color: white;
-  border: none;
 }
