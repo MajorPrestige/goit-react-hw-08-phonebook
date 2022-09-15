@@ -1,18 +1,16 @@
 .item {
   cursor: text;
-  max-width: 400px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
 
 .btn {
-  cursor: pointer;
-  max-width: 140px;
-  padding: 5px 10px;
-  text-align: center;
-  background-color: blue;
-  border-radius: 5px;
-  color: white;
-  border: none;
+  position: relative;
+}
+
+.icon {
+  position: relative;
+  top: -2px;
+  left: -5px;
 }

@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 import { current } from 'redux/auth/auth-operations';
+import ServerLoader from './ServerLoader/ServerLoader';
 
 const Contacts = lazy(() => import('pages/Contacts'));
 const HomePage = lazy(() => import('pages/HomePage'));
@@ -23,7 +24,7 @@ export const App = () => {
 
   return (
     <Container fixed>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<ServerLoader />}>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<HomePage />}>

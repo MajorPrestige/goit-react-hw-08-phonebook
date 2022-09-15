@@ -1,5 +1,7 @@
 .list {
   padding-inline-start: 0;
+  max-width: 750px;
+  margin: 75px auto 0;
 }
 
 .btn {
