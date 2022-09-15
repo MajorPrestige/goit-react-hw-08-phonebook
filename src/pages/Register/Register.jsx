@@ -4,6 +4,8 @@ import { Navigate } from 'react-router-dom';
 import { signup } from 'redux/auth/auth-operations';
 import { getLogin } from 'redux/auth/auth-selectors';
 
+import { Button } from '@mui/material';
+
 import s from './Register.module.css';
 
 const Register = () => {
@@ -41,9 +43,9 @@ const Register = () => {
         Password
         <input name="password" className={s.input} type="password" />
       </label>
-      <button className={s.btn} type="submit">
+      <Button className={s.btn} type="submit" variant="outlined" color="inherit">
         Register
-      </button>
+      </Button>
     </form>
   );
 };

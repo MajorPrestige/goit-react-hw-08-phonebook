@@ -4,6 +4,8 @@ import { Navigate } from 'react-router-dom';
 import { login } from 'redux/auth/auth-operations';
 import { getLogin } from 'redux/auth/auth-selectors';
 
+import { Button } from '@mui/material';
+
 import s from './Login.module.css';
 
 const Login = () => {
@@ -35,9 +37,9 @@ const Login = () => {
         Password
         <input name="password" className={s.input} type="password" />
       </label>
-      <button className={s.btn} type="submit">
-        Register
-      </button>
+      <Button type="submit" variant="outlined" color="inherit" className={s.btn}>
+        Log in
+      </Button>
     </form>
   );
 };

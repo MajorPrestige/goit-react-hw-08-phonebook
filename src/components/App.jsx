@@ -23,7 +23,7 @@ export const App = () => {
   });
 
   return (
-    <Container fixed>
+    <Container className="container" fixed>
       <Suspense fallback={<ServerLoader />}>
         <Routes>
           <Route element={<PublicRoute />}>

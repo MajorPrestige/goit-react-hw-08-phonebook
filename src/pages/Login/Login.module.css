@@ -1,31 +1,52 @@
 .form {
-  width: 500px;
-  border: 1px solid black;
+  margin-top: 24px;
+  background-color: #1976d2;
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   padding: 20px 10px;
 }
 
 .label {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  color: #ffffff;
+}
+
+.label:not(:last-child) {
+  margin-bottom: 24px;
 }
 
 .input {
+  font-size: 16px;
   max-width: 200px;
   margin-top: 10px;
+  border-radius: 40px;
+  outline: none;
+  border-color: #ffffff;
 }
 
 .btn {
-  cursor: pointer;
   max-width: 120px;
   padding: 10px 20px;
-  margin: 50px auto 0px auto;
+  margin: 24px auto 0px auto;
   text-align: center;
-  background-color: blue;
-  border-radius: 5px;
+  border-radius: 50px;
   color: white;
-  border: none;
+}
+
+@media screen and (max-width: 899.98px) {
+  .form {
+    width: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
