@@ -4,6 +4,8 @@ import { setFilter } from 'redux/contacts/filter/filter-slice';
 import { getFilter } from 'redux/contacts/filter/filter-selectors';
 import s from './ContactsSearch.module.css';
 
+import { TextField } from '@mui/material';
+
 const ContactsSearch = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
@@ -13,15 +15,16 @@ const ContactsSearch = () => {
   };
 
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        className={s.input}
+    <form className={s.wrapper}>
+      <TextField
+        type="text"
+        variant="standard"
+        label="Find contacts by name"
+        id="standard-basic"
         onChange={filterContact}
         value={filter}
-        type="text"
       />
-    </label>
+    </form>
   );
 };
 

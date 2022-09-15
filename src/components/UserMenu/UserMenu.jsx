@@ -19,7 +19,7 @@ const UserMenu = () => {
         <h2>Welcome, {name}!</h2>
         <Box className={s.container}>
           <p className={s.text}>{email}</p>
-          <Button variant="outlined" color="inherit">
+          <Button type="button" variant="outlined" color="inherit">
             <Link onClick={handleLogoutClick} to="/" className={s.link}>
               Logout
             </Link>

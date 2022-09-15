@@ -40,37 +40,41 @@ function ContactsForm() {
   };
 
   return (
-    <form className={s.form} onSubmit={handleFormSubmit}>
-      <label className={s.label}>
-        Name
+    <>
+      <form className={s.form} onSubmit={handleFormSubmit}>
         <TextField
+          className={s.inner}
+          type="text"
+          name="name"
           id="standard-basic"
           label="Name"
           variant="standard"
-          type="text"
-          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
           value={name}
           onChange={handleNameChange}
         />
-      </label>
 
-      <label className={s.label}>
-        Number
-        <input
-          className={s.input}
+        <TextField
           type="tel"
           name="number"
+          id="standard-basic"
+          label="Number"
+          variant="standard"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
           onChange={handleNumberChange}
         />
-      </label>
-      <button className={s.btn} type="submit">
-        Add contact
-      </button>
-    </form>
+
+        <Button className={s.btn} type="submit" variant="contained">
+          Add contact
+        </Button>
+      </form>
+      <hr />
+    </>
   );
 }
 
